@@ -60,7 +60,7 @@ export default function Testimonials() {
   const t = testimonials[active];
 
   return (
-    <section className="relative bg-black overflow-hidden py-20 px-8 md:px-15 lg:px-16">
+    <section className="relative bg-[#0B1D3A] overflow-hidden py-20 px-8 md:px-15 lg:px-16">
 
       <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[var(--primary)]/5 pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-[380px] h-[380px] rounded-full bg-[var(--primary)]/5 pointer-events-none" />

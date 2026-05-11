@@ -67,7 +67,7 @@ export default function Footer() {
     <footer className="w-full">
 
       {/* TOP FOOTER */}
-      <div className="bg-black text-white px-6 md:px-10 lg:px-16 pt-16 pb-12">
+      <div className="bg-[#0B1D3A] text-white px-6 md:px-10 lg:px-16 pt-16 pb-12">
 
         <div className=" mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 

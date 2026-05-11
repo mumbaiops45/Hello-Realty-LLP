@@ -9,7 +9,7 @@ export default function Stats() {
   ];
 
   return (
-    <section className="w-full py-6 bg-black">
+    <section className="w-full py-6 bg-[#0B1D3A]">
       <div className=" mx-auto px-6 lg:px-10">
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

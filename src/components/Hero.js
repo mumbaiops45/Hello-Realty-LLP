@@ -22,7 +22,7 @@ export default function Hero() {
       </video>
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-[#0B1D3A]/40"></div>
 
       {/* CONTENT */}
       <div className="relative z-10 h-full flex items-center">

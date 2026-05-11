@@ -86,7 +86,7 @@ export default function ServicesGrid({
                 relative overflow-hidden
                 ${headingMode === "dark"
                   ? "bg-white/10 text-white"
-                  : "bg-black text-white"
+                  : "bg-[#0B1D3A] text-white"
                 }
               `}
             >

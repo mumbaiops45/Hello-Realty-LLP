@@ -9,7 +9,7 @@ import CTASection from '@/components/CTA'
 function About() {
     return (
         <>
-            <div className="w-full bg-black py-16 px-6 md:px-16 flex items-center justify-center">
+            <div className="w-full bg-[#0B1D3A] py-16 px-6 md:px-16 flex items-center justify-center">
                 <h1 className="text-3xl md:text-5xl font-bold text-white">
                     <span className="text-[var(--primary)]">About</span> Us
                 </h1>
@@ -53,7 +53,7 @@ function About() {
 
             </div>
             <ServicesGrid
-                sectionBg="bg-black"
+                sectionBg="bg-[#0B1D3A]"
                 cardBg="bg-white/10 backdrop-blur-md border border-white/20"
                 textColor="text-white"
                 descColor="text-white/80"

@@ -2,7 +2,7 @@
 
 export default function CTASection() {
   return (
-    <section className="relative px-8 md:px-15 lg:px-30 py-24 overflow-hidden bg-gradient-to-b from-black to-gray-300 ">
+    <section className="relative px-8 md:px-15 lg:px-30 py-24 overflow-hidden bg-gradient-to-b from-[#0B1D3A] to-gray-300 ">
 
       {/* Background glow effects */}
       <div className="absolute -top-32 -left-32 w-[420px] h-[420px] bg-[var(--primary)] opacity-20 blur-[130px] rounded-full"></div>
