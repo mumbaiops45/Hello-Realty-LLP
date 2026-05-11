@@ -12,6 +12,7 @@ import {
 export default function Navbar() {
 
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   const [mobileMenu, setMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -33,21 +34,23 @@ export default function Navbar() {
     { name: "About", href: "/about" },
     { name: "Properties", href: "/properties" },
     { name: "Services", href: "/services" },
-    { name: "Projects", href: "/projects" },
-    { name: "Testimonials", href: "/testimonials" },
     { name: "Contact", href: "/contact" },
   ];
+
+  const textDark = !isHome || scrolled;
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white shadow-md py-4"
-          : "bg-transparent py-5"
+        isHome
+          ? scrolled
+            ? "bg-white shadow-md py-4"
+            : "bg-transparent py-5"
+          : "bg-white shadow-md py-4"
       }`}
     >
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="mx-auto px-6 lg:px-10">
 
         <div className="flex items-center justify-between">
 
@@ -55,12 +58,12 @@ export default function Navbar() {
           <Link
             href="/"
             className={`text-3xl font-bold transition-all duration-300 ${
-              scrolled ? "text-black" : "text-white"
+              textDark ? "text-black" : "text-white"
             }`}
           >
-            Dream
+            Welcome{" "}
             <span className="text-[var(--primary)]">
-              Estate
+              Realty LLP
             </span>
           </Link>
 
@@ -76,15 +79,13 @@ export default function Navbar() {
                   key={index}
                   href={link.href}
                   className={`font-medium transition-all duration-300
-
-                  ${
-                    isActive
-                      ? "text-[var(--primary)]"
-                      : scrolled
-                      ? "text-black hover:text-[var(--primary)]"
-                      : "text-white hover:text-[var(--primary)]"
-                  }
-
+                    ${
+                      isActive
+                        ? "text-[var(--primary)]"
+                        : textDark
+                        ? "text-black hover:text-[var(--primary)]"
+                        : "text-white hover:text-[var(--primary)]"
+                    }
                   `}
                 >
                   {link.name}
@@ -106,7 +107,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileMenu(!mobileMenu)}
             className={`lg:hidden text-3xl transition-all duration-300 ${
-              scrolled ? "text-black" : "text-white"
+              textDark ? "text-black" : "text-white"
             }`}
           >
             {mobileMenu ? (
@@ -139,13 +140,11 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMobileMenu(false)}
                   className={`font-medium transition-all duration-300
-
-                  ${
-                    isActive
-                      ? "text-[var(--primary)]"
-                      : "text-black hover:text-[var(--primary)]"
-                  }
-
+                    ${
+                      isActive
+                        ? "text-[var(--primary)]"
+                        : "text-black hover:text-[var(--primary)]"
+                    }
                   `}
                 >
                   {link.name}

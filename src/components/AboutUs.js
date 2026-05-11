@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section id="about" className="w-full py-20 bg-white">
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto px-6 lg:px-15 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* IMAGE */}
         <div className="relative w-full h-[400px] md:h-[400px] rounded-2xl overflow-hidden">

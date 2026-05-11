@@ -69,18 +69,18 @@ export default function Footer() {
       {/* TOP FOOTER */}
       <div className="bg-black text-white px-6 md:px-10 lg:px-16 pt-16 pb-12">
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className=" mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* LOGO + ABOUT */}
           <div>
 
             <Link
               href="/"
-              className="text-3xl font-bold"
+              className="text-2xl font-bold"
             >
-              Dream
+               Welcome {" "}
               <span className="text-[var(--primary)]">
-                Estate
+                Realty LLP
               </span>
             </Link>
 

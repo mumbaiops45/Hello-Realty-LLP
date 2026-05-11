@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --primary: #C8A96B;   /* main brand color */
-/* white color for text/buttons */
+  --primary: #C8A96B; /* main brand color */
 }
 
-
+/* Global font */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.6;

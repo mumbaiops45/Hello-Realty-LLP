@@ -10,7 +10,7 @@ export default function Stats() {
 
   return (
     <section className="w-full py-6 bg-black">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className=" mx-auto px-6 lg:px-10">
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
 
