@@ -48,7 +48,7 @@ export default function PropertyExperts() {
             </div>
 
             {/* Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-[30vw_1fr] gap-10 mx-auto">
 
                 {/* LEFT - Expert List */}
                 <div className="space-y-4">

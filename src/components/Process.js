@@ -47,7 +47,7 @@ export default function Process() {
                 {steps.map((step, index) => (
                     <div
                         key={index}
-                        className="group relative rounded-2xl bg-white/10 border border-white/10 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:bg-white/15"
+                        className="group relative rounded-2xl bg-white/10 border border-white/10 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:bg-white/15 overflow-hidden"
                     >
 
                         {/* Number */}

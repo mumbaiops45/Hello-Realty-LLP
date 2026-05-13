@@ -34,6 +34,7 @@ export default function Navbar() {
     { name: "About", href: "/about" },
     { name: "Properties", href: "/properties" },
     { name: "Services", href: "/services" },
+    { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -41,25 +42,23 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isHome
-          ? scrolled
-            ? "bg-white shadow-md py-4"
-            : "bg-transparent py-5"
-          : "bg-white shadow-md py-4"
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isHome
+        ? scrolled || mobileMenu
+          ? "bg-white shadow-md py-4"
+          : "bg-transparent py-5"
+        : "bg-white shadow-md py-4"
+        }`}
     >
 
-      <div className="mx-auto px-6 lg:px-10">
+      <div className="mx-auto px-0 lg:px-10">
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between px-6">
 
           {/* LOGO */}
           <Link
             href="/"
-            className={`text-3xl font-bold transition-all duration-300 ${
-              textDark ? "text-black" : "text-white"
-            }`}
+            className={`text-2xl lg:text-3xl font-bold transition-all duration-300 ${textDark || mobileMenu ? "text-black" : "text-white"
+              }`}
           >
             Welcome{" "}
             <span className="text-[var(--primary)]">
@@ -79,10 +78,9 @@ export default function Navbar() {
                   key={index}
                   href={link.href}
                   className={`font-medium transition-all duration-300
-                    ${
-                      isActive
-                        ? "text-[var(--primary)]"
-                        : textDark
+                    ${isActive
+                      ? "text-[var(--primary)]"
+                      : textDark
                         ? "text-black hover:text-[var(--primary)]"
                         : "text-white hover:text-[var(--primary)]"
                     }
@@ -94,24 +92,23 @@ export default function Navbar() {
             })}
 
             {/* CTA BUTTON */}
-            <Link
+            {/* <Link
               href="/contact"
               className="primary-btn px-4 py-2 rounded-md"
             >
               Book Visit
-            </Link>
+            </Link> */}
 
           </nav>
 
           {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setMobileMenu(!mobileMenu)}
-            className={`lg:hidden text-3xl transition-all duration-300 ${
-              textDark ? "text-black" : "text-white"
-            }`}
+            className={`lg:hidden text-3xl transition-all duration-300 ${textDark ? "text-black" : "text-white"
+              }`}
           >
             {mobileMenu ? (
-              <HiOutlineX />
+              <HiOutlineX className={mobileMenu?"text-black":"text-white"} />
             ) : (
               <HiOutlineMenuAlt3 />
             )}
@@ -121,14 +118,13 @@ export default function Navbar() {
 
         {/* MOBILE MENU */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-500 ${
-            mobileMenu
-              ? "max-h-[600px] opacity-100 mt-5"
-              : "max-h-0 opacity-0"
-          }`}
+          className={`lg:hidden overflow-hidden transition-all duration-500 ${mobileMenu
+            ? "max-h-[600px] opacity-100 mt-5"
+            : "max-h-0 opacity-0"
+            }`}
         >
 
-          <div className="bg-white rounded-3xl shadow-2xl p-6 flex flex-col gap-5">
+          <div className="bg-white rounded-b-xl shadow-2xl p-6 flex flex-col gap-5">
 
             {navLinks.map((link, index) => {
 
@@ -140,10 +136,9 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMobileMenu(false)}
                   className={`font-medium transition-all duration-300
-                    ${
-                      isActive
-                        ? "text-[var(--primary)]"
-                        : "text-black hover:text-[var(--primary)]"
+                    ${isActive
+                      ? "text-[var(--primary)]"
+                      : "text-black hover:text-[var(--primary)]"
                     }
                   `}
                 >

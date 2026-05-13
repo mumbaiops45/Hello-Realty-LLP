@@ -21,7 +21,7 @@ function About() {
                     {/* LEFT IMAGE */}
                     <div className="w-full h-[350px] md:h-[360px] overflow-hidden rounded-2xl">
                         <img
-                            src="/Home/pexels-shox-29174529.jpg"
+                            src="/Home/About.jpg"
                             alt="About Us"
                             className="w-full h-full object-cover hover:scale-105 transition duration-500"
                         />
@@ -31,10 +31,10 @@ function About() {
                     <div className="flex flex-col justify-center">
 
                         {/* HEADING */}
-                        <h2 className=" font-bold mb-5 leading-snug">
+                        <h2 className=" font-bold mb-5 leading-snug pl-4 py-1 border-l-2">
                             <span className="text-black">Building </span>
                             <span className="text-[var(--primary)]">Trust</span>{" "}
-                            <span className="text-black">in Real Estate</span>
+                           in <span className="text-[var(--primary)]"> Real Estate</span>
                         </h2>
 
                         {/* TEXT */}
@@ -59,7 +59,7 @@ function About() {
                 descColor="text-white/80"
                 headingMode="dark"
             />
-            <PropertyExperts />
+            <PropertyExperts  />
             <Testimonials />
             <FAQSection />
             <CTASection />

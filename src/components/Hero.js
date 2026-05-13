@@ -52,7 +52,7 @@ export default function Hero() {
             <div className="mt-10">
 
               <Link
-                href="#contact"
+                href="/contact"
                 className="primary-btn px-4 py-2 rounded-md"
               >
                 Contact Us

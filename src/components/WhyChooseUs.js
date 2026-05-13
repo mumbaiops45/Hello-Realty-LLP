@@ -88,19 +88,21 @@ export default function WhyChooseUs() {
             {/* Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {features.map((item, index) => (
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: .5 }}
-                        viewport={{ once: true }}
+                    <div
+                        
                         key={index}
-                        className="group relative overflow-hidden rounded-[28px] border border-gray-200 bg-white/80 p-6 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl flex flex-col"
+                        className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-200 p-6 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl flex flex-col"
                     >
 
                         {/* Icon */}
-                        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl text-3xl text-white transition-all duration-500 group-hover:scale-110">
+                        <motion.div
+                         initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: .5 }}
+                        viewport={{ once: true }}
+                        className="mb-6 flex h-16 w-full items-center justify-center rounded-2xl text-3xl text-white transition-all duration-500 group-hover:scale-110">
                             {item.icon}
-                        </div>
+                        </motion.div>
 
                         {/* Title */}
                         <h3 className="text-2xl  font-bold text-black mb-4 transition-all duration-500">
@@ -117,7 +119,7 @@ export default function WhyChooseUs() {
                             <div className="h-[2px] w-12 rounded-full bg-gradient-to-r from-[var(--primary)] to-black transition-all duration-500 group-hover:w-full"></div>
                         </div>
 
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </section>

@@ -71,6 +71,27 @@ strong {
 
 
 /* ============================= */
-/* SECONDARY BUTTON */
+/* scroll bar animation */
 /* ============================= */
 
+/* WIDTH */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* TRACK (BACKGROUND) */
+::-webkit-scrollbar-track {
+  background: #0B1D3A;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 999px;
+}
+
+/* HOVER EFFECT */
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

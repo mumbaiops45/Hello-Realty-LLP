@@ -1,5 +1,7 @@
 import React from 'react'
 import FeaturedProperties from '@/components/FeaturedProperties'
+import FAQSection from '@/components/FAQ'
+import CTASection from '@/components/CTA'
 
 const Properties = () => {
     return (
@@ -9,7 +11,9 @@ const Properties = () => {
                     <span className="text-[var(--primary)]">Properties</span> Listing
                 </h1>
             </div>
-            <FeaturedProperties />
+            <FeaturedProperties hide={false} />
+            <FAQSection />
+            <CTASection />
         </>
     )
 }

@@ -43,7 +43,7 @@ export default function ServicesGrid({
           text-3xl md:text-4xl font-bold mb-12 border-l-4 pl-4 py-1
           ${headingMode === "dark"
             ? "text-white border-white"
-            : "text-black border-[var(--primery)]"
+            : "text-black border-[var(--primary)]"
           }
         `}
       >
@@ -68,7 +68,8 @@ export default function ServicesGrid({
               hover:shadow-xl
               transition-all duration-300
               flex flex-col
-              min-h-[240px]
+              shadow-md
+              
             `}
           >
 
@@ -85,7 +86,7 @@ export default function ServicesGrid({
                 px-5 py-4 flex items-center justify-center
                 relative overflow-hidden
                 ${headingMode === "dark"
-                  ? "bg-white/10 text-white"
+                  ? "bg-white/80 text-black"
                   : "bg-[#0B1D3A] text-white"
                 }
               `}

@@ -24,7 +24,7 @@ export default function Stats() {
                 {item.number}
               </h2>
 
-              <p className="mt-2 text-gray-600 font-medium">
+              <p className="mt-2 text-gray-400 font-medium">
                 {item.label}
               </p>
 

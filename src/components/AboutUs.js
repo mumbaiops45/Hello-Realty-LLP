@@ -30,7 +30,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold leading-tight"
+            className="text-3xl md:text-4xl font-bold leading-tight pl-4 py-1 border-l-2"
           >
             Discover Your{" "}
             <span className="text-[var(--primary)]">

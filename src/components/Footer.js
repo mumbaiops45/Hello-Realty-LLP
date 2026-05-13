@@ -24,14 +24,14 @@ export default function Footer() {
 
   const pathname = usePathname();
 
-  const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Projects", href: "/projects" },
-    { name: "Testimonials", href: "/testimonials" },
-    { name: "Contact", href: "/contact" },
-  ];
+ const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Contact", href: "/contact" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms & Conditions", href: "/terms-and-conditions" },
+];
 
   const propertyLinks = [
     { name: "Apartments", href: "/properties" },
@@ -53,10 +53,10 @@ export default function Footer() {
       icon: <FaXTwitter />,
       href: "https://x.com",
     },
-    {
-      icon: <FaLinkedinIn />,
-      href: "https://linkedin.com",
-    },
+    // {
+    //   icon: <FaLinkedinIn />,
+    //   href: "https://linkedin.com",
+    // },
     {
       icon: <FaYoutube />,
       href: "https://youtube.com",
@@ -78,7 +78,7 @@ export default function Footer() {
               href="/"
               className="text-2xl font-bold"
             >
-               Welcome {" "}
+              Welcome {" "}
               <span className="text-[var(--primary)]">
                 Realty LLP
               </span>
@@ -112,11 +112,10 @@ export default function Footer() {
                       href={link.href}
                       className={`transition-all duration-300
 
-                      ${
-                        isActive
+                      ${isActive
                           ? "text-[var(--primary)]"
                           : "text-gray-400 hover:text-[var(--primary)]"
-                      }
+                        }
 
                       `}
                     >
@@ -151,11 +150,10 @@ export default function Footer() {
                       href={link.href}
                       className={`transition-all duration-300
 
-                      ${
-                        isActive
+                      ${isActive
                           ? "text-[var(--primary)]"
                           : "text-gray-400 hover:text-[var(--primary)]"
-                      }
+                        }
 
                       `}
                     >
@@ -182,7 +180,7 @@ export default function Footer() {
               {/* ADDRESS */}
               <div className="flex items-start gap-3">
 
-                <HiOutlineLocationMarker className="text-[var(--primary)] text-xl mt-1" />
+                <HiOutlineLocationMarker className="shrink-0 text-[var(--primary)] text-xl mt-1" />
 
                 <p>
                   221B Real Estate Avenue,
@@ -254,13 +252,27 @@ export default function Footer() {
       </div>
 
       {/* COPYRIGHT */}
-      <div className="bg-[var(--primary)] text-white text-center py-4 text-sm px-4">
-
-        © {new Date().getFullYear()} DreamEstate.
-        All Rights Reserved.
-
+     <div className="flex flex-col md:flex-row md:justify-between  gap-2 bg-[var(--primary)] text-white py-4 text-sm px-4">
+        <div className="md:pl-10 pl-0 text-center">
+          © {new Date().getFullYear()} Welcome Realty LLP.
+          All Rights Reserved.
+        </div>
+        <div className="md:pr-10 pr-0 text-center">
+          <p>
+            Developed by{" "}
+            <a
+              href="https://www.nakshatranamahacreations.com/website-developers-in-mumbai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline transition-all duration-300"
+            >
+              Nakshatra Namaha Creations
+            </a>
+          </p>
+        </div>
       </div>
 
     </footer>
   );
 }
+

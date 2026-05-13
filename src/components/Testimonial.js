@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
 const testimonials = [
   {
@@ -65,7 +66,7 @@ export default function Testimonials() {
       <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[var(--primary)]/5 pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-[380px] h-[380px] rounded-full bg-[var(--primary)]/5 pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 mx-auto">
 
         <div className="mb-6">
           <h2 className="relative text-white inline-block pl-4 py-1 border-l-2 mb-4  ">
@@ -132,7 +133,7 @@ export default function Testimonials() {
                     }
                     className="w-10 h-10 rounded-full border border-[var(--primary)]/30 flex items-center justify-center text-[var(--primary)]"
                   >
-                    ←
+                     <HiArrowLeft className="cursor-pointer" />
                   </button>
 
                   <button
@@ -141,7 +142,7 @@ export default function Testimonials() {
                     }
                     className="w-10 h-10 rounded-full bg-[var(--primary)] flex items-center justify-center text-white"
                   >
-                    →
+                     <HiArrowRight className="cursor-pointer" />
                   </button>
 
                 </div>
