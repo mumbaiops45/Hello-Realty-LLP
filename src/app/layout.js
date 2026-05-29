@@ -9,6 +9,7 @@ export const metadata = {
   description:
     "Welcome Realty LLP offers premium residential and commercial real estate solutions with trusted property services, modern developments, and investment opportunities tailored to your needs.",
 
+    
   keywords: [
     "Welcome Realty LLP",
     "real estate",

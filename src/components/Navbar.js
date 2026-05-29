@@ -46,7 +46,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isHome
         ? scrolled || mobileMenu
           ? "bg-white shadow-md py-0"
-          : "bg-transparent py-2"
+          : "bg-white py-0"
         : "bg-white shadow-md py-0"
         }`}
     >
@@ -67,6 +67,23 @@ export default function Navbar() {
             />
           </Link>
 
+          {/* <Link href="/" className="flex items-center">
+
+            <Image
+              src={
+                textDark || mobileMenu
+                  ? "/logo-dark.png"
+                  : "/logo-light.png"
+              }
+              alt="Welcome Realty LLP"
+              width={180}
+              height={60}
+              priority
+              className="w-auto h-10 lg:h-20 object-contain transition-all duration-300"
+            />
+
+          </Link> */}
+
           {/* DESKTOP MENU */}
           <nav className="hidden lg:flex items-center gap-10">
 
@@ -83,7 +100,7 @@ export default function Navbar() {
                       ? "text-[var(--primary)]"
                       : textDark
                         ? "text-black hover:text-[var(--primary)]"
-                        : "text-white hover:text-[var(--primary)]"
+                        : "text-black hover:text-[var(--primary)]"
                     }
                   `}
                 >

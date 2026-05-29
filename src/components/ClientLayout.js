@@ -7,7 +7,7 @@ export default function ClientLayout({ children }) {
   const isHome = pathname === "/";
 
   return (
-    <main className={isHome ? "" : "pt-18"}>
+    <main className={isHome ? "pt-18" : "pt-18"}>
       {children}
     </main>
   );
