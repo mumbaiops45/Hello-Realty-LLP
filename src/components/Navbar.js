@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -44,9 +45,9 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isHome
         ? scrolled || mobileMenu
-          ? "bg-white shadow-md py-4"
-          : "bg-transparent py-5"
-        : "bg-white shadow-md py-4"
+          ? "bg-white shadow-md py-0"
+          : "bg-transparent py-2"
+        : "bg-white shadow-md py-0"
         }`}
     >
 
@@ -55,15 +56,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-6">
 
           {/* LOGO */}
-          <Link
-            href="/"
-            className={`text-2xl lg:text-3xl font-bold transition-all duration-300 ${textDark || mobileMenu ? "text-black" : "text-white"
-              }`}
-          >
-            Welcome{" "}
-            <span className="text-[var(--primary)]">
-              Realty LLP
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Welcome Realty LLP"
+              width={180}
+              height={60}
+              priority
+              className="w-auto h-10 lg:h-20 object-contain"
+            />
           </Link>
 
           {/* DESKTOP MENU */}
@@ -108,7 +109,7 @@ export default function Navbar() {
               }`}
           >
             {mobileMenu ? (
-              <HiOutlineX className={mobileMenu?"text-black":"text-white"} />
+              <HiOutlineX className={mobileMenu ? "text-black" : "text-white"} />
             ) : (
               <HiOutlineMenuAlt3 />
             )}

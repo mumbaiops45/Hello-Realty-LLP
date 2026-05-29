@@ -1,7 +1,7 @@
 "use client";
 
 // src/components/Footer.jsx
-
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -74,15 +74,16 @@ export default function Footer() {
           {/* LOGO + ABOUT */}
           <div>
 
-            <Link
-              href="/"
-              className="text-2xl font-bold"
-            >
-              Welcome {" "}
-              <span className="text-[var(--primary)]">
-                Realty LLP
-              </span>
-            </Link>
+              <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Welcome Realty LLP"
+              width={180}
+              height={60}
+              priority
+              className="w-auto h-10 lg:h-18 object-contain"
+            />
+          </Link>
 
             <p className="text-gray-400 mt-5 leading-relaxed text-sm">
               We help clients discover premium apartments,
