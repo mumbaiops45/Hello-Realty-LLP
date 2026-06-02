@@ -43,24 +43,24 @@ export default function Footer() {
   const socialLinks = [
     {
       icon: <FaFacebookF />,
-      href: "https://facebook.com",
+      href: "#",
     },
     {
       icon: <FaInstagram />,
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/welcomerealtyconsultant?utm_source=qr&igsh=MXE1Y293Nm5od2tq",
     },
-    {
-      icon: <FaXTwitter />,
-      href: "https://x.com",
-    },
+    // {
+    //   icon: <FaXTwitter />,
+    //   href: "#",
+    // },
     // {
     //   icon: <FaLinkedinIn />,
     //   href: "https://linkedin.com",
     // },
-    {
-      icon: <FaYoutube />,
-      href: "https://youtube.com",
-    },
+    // {
+    //   icon: <FaYoutube />,
+    //   href: "#",
+    // },
   ];
 
   return (
