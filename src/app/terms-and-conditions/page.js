@@ -1,5 +1,4 @@
 export default function TermsAndConditionsPage() {
-
   const sections = [
     {
       title: "1. Acceptance of",
@@ -45,16 +44,16 @@ export default function TermsAndConditionsPage() {
       title: "5. Intellectual",
       highlight: "Property",
       content: [
-        "All website content including text, images, logos, designs, graphics, and branding are the property of this website unless otherwise stated.",
-        "Unauthorized copying, reproduction, or distribution is strictly prohibited.",
+        "All website content including text, images, logos, designs, graphics, and branding are the property of Welcome Realty LLP unless otherwise stated.",
+        "Unauthorized copying, reproduction, modification, or distribution of any content is strictly prohibited.",
       ],
     },
 
     {
-      title: "6. Third-Party",
+      title: "6. Third Party",
       highlight: "Links",
       content: [
-        "Our website may contain links to third-party websites or external property platforms. We are not responsible for their content, services, or privacy practices.",
+        "Our website may contain links to third party websites or external property platforms. We are not responsible for their content, services, policies, or privacy practices.",
       ],
     },
 
@@ -62,7 +61,7 @@ export default function TermsAndConditionsPage() {
       title: "7. Limitation of",
       highlight: "Liability",
       content: [
-        "We are not liable for any direct, indirect, incidental, or consequential damages resulting from the use of this website or reliance on property information provided on the platform.",
+        "Welcome Realty LLP shall not be liable for any direct, indirect, incidental, consequential, or special damages resulting from the use of this website or reliance upon any information contained herein.",
       ],
     },
 
@@ -70,7 +69,7 @@ export default function TermsAndConditionsPage() {
       title: "8. Privacy",
       highlight: "Policy",
       content: [
-        "By using this website, you also agree to our Privacy Policy regarding the collection and use of personal information.",
+        "By using this website, you also agree to our Privacy Policy regarding the collection, storage, and use of personal information.",
       ],
     },
 
@@ -78,8 +77,8 @@ export default function TermsAndConditionsPage() {
       title: "9. Changes to",
       highlight: "Terms",
       content: [
-        "We reserve the right to modify or update these Terms & Conditions at any time without prior notice.",
-        "Continued use of the website after changes indicates your acceptance of the revised terms.",
+        "We reserve the right to modify, update, or replace these Terms & Conditions at any time without prior notice.",
+        "Continued use of the website after any changes indicates your acceptance of the revised terms.",
       ],
     },
 
@@ -87,7 +86,8 @@ export default function TermsAndConditionsPage() {
       title: "10. Governing",
       highlight: "Law",
       content: [
-        "These Terms & Conditions shall be governed and interpreted in accordance with the laws applicable in your jurisdiction.",
+        "These Terms & Conditions shall be governed and construed in accordance with the laws of India.",
+        "Any disputes arising from the use of this website shall be subject to the exclusive jurisdiction of the courts located in Thane, Maharashtra.",
       ],
     },
 
@@ -95,21 +95,20 @@ export default function TermsAndConditionsPage() {
       title: "11. Contact",
       highlight: "Us",
       content: [
-        "Email: info@yourwebsite.com",
-        "Phone: +91 XXXXX XXXXX",
-        "Address: Your Office Address Here",
+        "If you have any questions regarding these Terms & Conditions, please contact us using the details below.",
+        "Company Name: Welcome Realty LLP",
+        "Email: welcomerealty.llp@gmail.com",
+        "Phone: +91 70216 25739",
+        "Address: Office No. 530, Lodha Signet A, Kolshet Road, Thane West, 400607",
       ],
     },
   ];
 
   return (
     <section className="bg-gray-100 text-black min-h-screen py-20 px-6 md:px-12">
-
       <div className="max-w-5xl mx-auto">
-
         {/* Heading */}
         <div className="mb-10">
-
           <span className="text-[var(--primary)] uppercase tracking-[4px] text-sm font-semibold">
             Legal Information
           </span>
@@ -124,33 +123,31 @@ export default function TermsAndConditionsPage() {
           <div className="w-24 h-[3px] bg-[var(--primary)] mt-2"></div>
 
           <p className="text-black text-lg mt-4">
-            Last Updated: May 12, 2026
+            Last Updated: June 2, 2026
           </p>
-
         </div>
 
         {/* Intro */}
         <div className="mb-10">
-
           <p className="text-black leading-8 text-lg">
-            Welcome to our real estate website. By accessing or using our
-            platform, you agree to comply with and be bound by the following
-            Terms & Conditions.
+            Welcome to Welcome Realty LLP. By accessing, browsing, or using
+            our website and services, you agree to comply with and be bound
+            by these Terms & Conditions. These terms govern your use of our
+            website, property listings, inquiry forms, and related real
+            estate services.
           </p>
 
           <p className="text-black leading-8 text-lg mt-6">
-            Please read these terms carefully before using our website or
-            services.
+            Please read these Terms & Conditions carefully before using our
+            website. If you do not agree with any part of these terms, you
+            should discontinue use of the website and related services.
           </p>
-
         </div>
 
-        {/* MAPPED SECTIONS */}
+        {/* Sections */}
         <div className="space-y-0">
-
           {sections.map((section, index) => (
             <div key={index}>
-
               <h2 className="text-3xl font-bold mb-0">
                 {section.title}{" "}
                 <span className="text-[var(--primary)]">
@@ -159,8 +156,7 @@ export default function TermsAndConditionsPage() {
               </h2>
 
               <div className="bg-white/5 border border-white/10 rounded-3xl px-8 pb-8 pt-4 mt-0">
-
-                {/* PARAGRAPHS */}
+                {/* Paragraphs */}
                 {section.content &&
                   section.content.map((text, i) => (
                     <p
@@ -173,7 +169,7 @@ export default function TermsAndConditionsPage() {
                     </p>
                   ))}
 
-                {/* LIST */}
+                {/* List */}
                 {section.list && (
                   <ul className="space-y-3 text-black">
                     {section.list.map((item, i) => (
@@ -183,17 +179,13 @@ export default function TermsAndConditionsPage() {
                     ))}
                   </ul>
                 )}
-
               </div>
-
             </div>
           ))}
-
         </div>
 
         {/* Agreement */}
         <div className="border-t border-white/10 pt-10 mt-10">
-
           <h2 className="text-3xl font-bold mb-0">
             User{" "}
             <span className="text-[var(--primary)]">
@@ -202,14 +194,12 @@ export default function TermsAndConditionsPage() {
           </h2>
 
           <p className="text-black leading-8 mt-4">
-            By using this website, you acknowledge that you have read,
-            understood, and agreed to these Terms & Conditions.
+            By accessing or using this website, you acknowledge that you
+            have read, understood, and agreed to be bound by these Terms &
+            Conditions and all applicable laws and regulations.
           </p>
-
         </div>
-
       </div>
-
     </section>
   );
 }

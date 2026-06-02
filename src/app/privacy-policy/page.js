@@ -1,5 +1,4 @@
 export default function PrivacyPolicyPage() {
-
   const sections = [
     {
       title: "1. Information We",
@@ -16,7 +15,6 @@ export default function PrivacyPolicyPage() {
             "Any details submitted through forms",
           ],
         },
-
         {
           heading: "Automatically Collected Information",
           list: [
@@ -66,7 +64,7 @@ export default function PrivacyPolicyPage() {
     },
 
     {
-      title: "5. Third-Party",
+      title: "5. Third Party",
       highlight: "Services",
       list: [
         "Google Analytics",
@@ -101,12 +99,12 @@ export default function PrivacyPolicyPage() {
       title: "8. External",
       highlight: "Links",
       content: [
-        "Our website may contain links to third-party websites or property listings. We are not responsible for the privacy practices of those websites.",
+        "Our website may contain links to third party websites or property listings. We are not responsible for the privacy practices of those websites.",
       ],
     },
 
     {
-      title: "9. Children’s",
+      title: "9. Children's",
       highlight: "Privacy",
       content: [
         "Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children.",
@@ -125,21 +123,20 @@ export default function PrivacyPolicyPage() {
       title: "11. Contact",
       highlight: "Us",
       content: [
-        "Email: info@yourwebsite.com",
-        "Phone: +91 XXXXX XXXXX",
-        "Address: Your Office Address Here",
+        "If you have any questions regarding this Privacy Policy or your personal information, please contact us using the details below.",
+        "Company Name: Welcome Realty LLP",
+        "Email: welcomerealty.llp@gmail.com",
+        "Phone: +91 70216 25739",
+        "Address: Office No. 530, Lodha Signet A, Kolshet Road, Thane West, 400607",
       ],
     },
   ];
 
   return (
     <section className="bg-gray-100 text-black min-h-screen py-20 px-6 md:px-12">
-
       <div className="max-w-5xl mx-auto">
-
         {/* Heading */}
         <div className="mb-10">
-
           <span className="text-[var(--primary)] uppercase tracking-[4px] text-sm font-semibold">
             Legal Information
           </span>
@@ -154,34 +151,33 @@ export default function PrivacyPolicyPage() {
           <div className="w-24 h-[3px] bg-[var(--primary)] mt-2"></div>
 
           <p className="text-black text-lg mt-4">
-            Last Updated: May 12, 2026
+            Last Updated: June 2, 2026
           </p>
-
         </div>
 
         {/* Intro */}
         <div className="mb-10">
-
           <p className="text-black leading-8 text-lg">
-            Welcome to our real estate website. Your privacy is important to us,
-            and we are committed to protecting the personal information you
-            share while using our platform.
+            Welcome Realty LLP values your privacy and is committed to
+            protecting the personal information you share with us while using
+            our website and real estate services. We are dedicated to
+            maintaining the security, confidentiality, and integrity of your
+            personal information.
           </p>
 
           <p className="text-black leading-8 text-lg mt-6">
-            This Privacy Policy explains how we collect, use, store, and
-            protect your information when you visit our website or use our
+            This Privacy Policy explains how Welcome Realty LLP collects, uses,
+            stores, protects, and manages your information when you browse our
+            website, submit property inquiries, request property details,
+            schedule site visits, or interact with our team through any of our
             services.
           </p>
-
         </div>
 
-        {/* MAPPED SECTIONS */}
+        {/* Sections */}
         <div className="space-y-0">
-
           {sections.map((section, index) => (
             <div key={index}>
-
               <h2 className="text-3xl font-bold mb-0">
                 {section.title}{" "}
                 <span className="text-[var(--primary)]">
@@ -190,8 +186,6 @@ export default function PrivacyPolicyPage() {
               </h2>
 
               <div className="bg-white/5 border border-white/10 rounded-3xl px-8 pb-8 pt-4 mt-0">
-
-                {/* CONTENT */}
                 {section.content &&
                   section.content.map((text, i) => (
                     <p
@@ -204,7 +198,6 @@ export default function PrivacyPolicyPage() {
                     </p>
                   ))}
 
-                {/* LIST */}
                 {section.list && (
                   <ul
                     className={`text-black ${
@@ -214,14 +207,11 @@ export default function PrivacyPolicyPage() {
                     }`}
                   >
                     {section.list.map((item, i) => (
-                      <li key={i}>
-                        • {item}
-                      </li>
+                      <li key={i}>• {item}</li>
                     ))}
                   </ul>
                 )}
 
-                {/* CARDS */}
                 {section.cards &&
                   section.cards.map((card, i) => (
                     <div
@@ -230,32 +220,24 @@ export default function PrivacyPolicyPage() {
                         i !== 0 ? "mt-6" : ""
                       }`}
                     >
-
                       <h3 className="text-2xl font-semibold mb-4">
                         {card.heading}
                       </h3>
 
                       <ul className="space-y-3 text-black">
                         {card.list.map((item, j) => (
-                          <li key={j}>
-                            • {item}
-                          </li>
+                          <li key={j}>• {item}</li>
                         ))}
                       </ul>
-
                     </div>
                   ))}
-
               </div>
-
             </div>
           ))}
-
         </div>
 
         {/* Consent */}
         <div className="border-t border-white/10 pt-10 mt-10">
-
           <h2 className="text-3xl font-bold mb-0">
             User{" "}
             <span className="text-[var(--primary)]">
@@ -267,11 +249,8 @@ export default function PrivacyPolicyPage() {
             By using this website, you consent to the terms outlined in this
             Privacy Policy.
           </p>
-
         </div>
-
       </div>
-
     </section>
   );
 }

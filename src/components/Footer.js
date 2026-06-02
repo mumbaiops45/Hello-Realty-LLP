@@ -41,10 +41,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    {
-      icon: <FaFacebookF />,
-      href: "#",
-    },
+    // {
+    //   icon: <FaFacebookF />,
+    //   href: "#",
+    // },
     {
       icon: <FaInstagram />,
       href: "https://www.instagram.com/welcomerealtyconsultant?utm_source=qr&igsh=MXE1Y293Nm5od2tq",
@@ -170,84 +170,73 @@ export default function Footer() {
           </div>
 
           {/* CONTACT */}
-          <div>
+        {/* CONTACT */}
+<div>
+  <h3 className="text-xl font-semibold mb-5">
+    Contact Info
+  </h3>
 
-            <h3 className="text-xl font-semibold mb-5">
-              Contact Info
-            </h3>
+  <div className="flex flex-col gap-5 text-sm text-gray-400">
 
-            <div className="flex flex-col gap-4 text-sm text-gray-400">
+    {/* ADDRESS */}
+    <div className="flex items-start gap-3">
+      <HiOutlineLocationMarker className="shrink-0 text-[var(--primary)] text-xl mt-1" />
 
-              {/* ADDRESS */}
-              <div className="flex items-start gap-3">
+      <p className="leading-7">
+        Office No. 530, Lodha Signet A, Kolshet Road, Thane West, 400607
+      </p>
+    </div>
 
-                <HiOutlineLocationMarker className="shrink-0 text-[var(--primary)] text-xl mt-1" />
+    {/* PHONE */}
+    <div className="flex items-center gap-3">
+      <HiOutlinePhone className="text-[var(--primary)] text-xl shrink-0" />
 
-                <p>
-                  221B Real Estate Avenue,
-                  Mumbai, Maharashtra,
-                  India - 400001
-                </p>
+      <a
+        href="tel:+917021625739"
+        className="hover:text-[var(--primary)] transition-all duration-300"
+      >
+        +91 70216 25739
+      </a>
+    </div>
 
-              </div>
+    {/* EMAIL */}
+    <div className="flex items-center gap-3">
+      <HiOutlineMail className="text-[var(--primary)] text-xl shrink-0" />
 
-              {/* PHONE */}
-              <div className="flex items-center gap-3">
+      <a
+        href="mailto:welcomerealty.llp@gmail.com"
+        className="hover:text-[var(--primary)] transition-all duration-300 break-all"
+      >
+        welcomerealty.llp@gmail.com
+      </a>
+    </div>
 
-                <HiOutlinePhone className="text-[var(--primary)] text-xl" />
+  </div>
 
-                <a
-                  href="tel:+919876543210"
-                  className="hover:text-[var(--primary)] transition-all duration-300"
-                >
-                  +91 98765 43210
-                </a>
-
-              </div>
-
-              {/* EMAIL */}
-              <div className="flex items-center gap-3">
-
-                <HiOutlineMail className="text-[var(--primary)] text-xl" />
-
-                <a
-                  href="mailto:info@dreamestate.com"
-                  className="hover:text-[var(--primary)] transition-all duration-300"
-                >
-                  info@dreamestate.com
-                </a>
-
-              </div>
-
-            </div>
-
-            {/* SOCIAL ICONS */}
-            <div className="flex items-center gap-3 mt-6 flex-wrap">
-
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    w-11 h-11
-                    rounded-full
-                    border border-gray-600
-                    flex items-center justify-center
-                    text-white
-                    hover:bg-[var(--primary)]
-                    hover:border-[var(--primary)]
-                    transition-all duration-300
-                  "
-                >
-                  {social.icon}
-                </a>
-              ))}
-
-            </div>
-
-          </div>
+  {/* SOCIAL ICONS */}
+  <div className="flex items-center gap-3 mt-6 flex-wrap">
+    {socialLinks.map((social, index) => (
+      <a
+        key={index}
+        href={social.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          w-11 h-11
+          rounded-full
+          border border-gray-600
+          flex items-center justify-center
+          text-white
+          hover:bg-[var(--primary)]
+          hover:border-[var(--primary)]
+          transition-all duration-300
+        "
+      >
+        {social.icon}
+      </a>
+    ))}
+  </div>
+</div>
 
         </div>
       </div>
