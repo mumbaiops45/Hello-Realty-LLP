@@ -1,65 +1,71 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function FAQSection() {
   const [activeIndex, setActiveIndex] = useState(null);
-  const [visible, setVisible] = useState([]);
-  const cardsRef = useRef([]);
 
   const faqs = [
     {
-      q: "What services does this platform provide?",
-      a: "Our platform helps you buy, sell, and rent properties easily. We connect verified buyers, sellers, and agents to ensure a smooth real estate experience."
+      q: "What real estate services do you provide?",
+      a: "We offer residential, commercial, and plotted land investments along with end-to-end real estate solutions including buying, selling, and investment guidance.",
     },
     {
-      q: "How can I search for properties?",
-      a: "You can search properties using filters like location, budget, property type, and amenities. This makes it easy to find your ideal home or investment property."
+      q: "Which locations do you serve?",
+      a: "We serve clients across Thane, Mumbai, Panvel, and Dubai, providing access to premium property opportunities in key real estate markets.",
     },
     {
-      q: "Are the property listings verified?",
-      a: "Yes. We ensure that all listed properties are verified by our team or trusted agents to maintain transparency and avoid fake listings."
+      q: "Are your property listings verified?",
+      a: "Yes, all properties are carefully verified to ensure legal clarity, transparency, and safe transactions for buyers and investors.",
     },
     {
-      q: "Do you offer assistance for property documentation?",
-      a: "Yes, we provide full support for legal paperwork, documentation, and ownership transfer to make your property transaction hassle-free."
-    }
+      q: "Do you provide documentation support?",
+      a: "Yes, we specialize in complete real estate documentation including verification, creation, scrutiny, and ownership transfer assistance.",
+    },
   ];
 
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const cardsRef = useRef([]);
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = cardsRef.current.indexOf(entry.target);
-          if (entry.isIntersecting) {
-            setVisible((prev) => {
-              const updated = [...prev];
-              updated[index] = true;
-              return updated;
-            });
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(headingRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
+          scrollTrigger: { trigger: headingRef.current, start: "top 85%", once: true },
+        }
+      );
 
-    cardsRef.current.forEach((card) => {
-      if (card) observer.observe(card);
-    });
+      gsap.fromTo(cardsRef.current,
+        { opacity: 0, x: -60 },
+        {
+          opacity: 1, x: 0, duration: 0.7, ease: "power3.out",
+          stagger: 0.15,
+          scrollTrigger: { trigger: cardsRef.current[0], start: "top 85%", once: true },
+        }
+      );
+    }, sectionRef);
 
-    return () => observer.disconnect();
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
+      ref={sectionRef}
       id="faq"
       className="px-8 md:px-15 lg:px-30 pt-16 pb-20 relative bg-white overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/10 to-transparent z-0"></div>
 
-      {/* Heading (LEFT ALIGNED WITH BORDER) */}
-      <div className="relative z-10 mb-12 text-left ">
+      {/* Heading */}
+      <div ref={headingRef} style={{ opacity: 0 }} className="relative z-10 mb-12 text-left ">
         <span className="text-[13px] px-4 py-2 rounded-full text-[var(--primary)] bg-[var(--primary)]/10 uppercase tracking-wider inline-block mb-3">
           FAQ's
         </span>
@@ -77,24 +83,13 @@ export default function FAQSection() {
       <div className="relative z-10 max-w-4xl mx-auto space-y-4">
         {faqs.map((faq, i) => {
           const isActive = activeIndex === i;
-          const isVisible = visible[i];
 
           return (
             <div
               key={i}
               ref={(el) => (cardsRef.current[i] = el)}
-              className={`
-                bg-white/70 backdrop-blur-lg
-                border border-gray-200
-                rounded-xl p-6
-                cursor-pointer
-                transition-all duration-700 ease-out
-                shadow-sm hover:shadow-md
-                ${isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-16"}
-              `}
-              style={{ transitionDelay: `${i * 150}ms` }}
+              style={{ opacity: 0 }}
+              className="bg-white/70 backdrop-blur-lg border border-gray-200 rounded-xl p-6 cursor-pointer shadow-sm hover:shadow-md transition-all duration-300"
               onClick={() => setActiveIndex(isActive ? null : i)}
             >
               {/* QUESTION */}

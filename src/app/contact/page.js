@@ -1,6 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Inline icons — no react-icons dependency
 const LocationIcon = () => (
@@ -36,6 +40,46 @@ const Contact = () => {
   const [status, setStatus] = useState("");
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
+
+  const headerRef = useRef(null);
+  const sectionHeadingRef = useRef(null);
+  const formPanelRef = useRef(null);
+  const infoPanelRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(headerRef.current,
+        { opacity: 0, y: -50 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }
+      );
+
+      gsap.fromTo(sectionHeadingRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
+          scrollTrigger: { trigger: sectionHeadingRef.current, start: "top 85%", once: true },
+        }
+      );
+
+      gsap.fromTo(formPanelRef.current,
+        { opacity: 0, x: -60 },
+        {
+          opacity: 1, x: 0, duration: 0.9, ease: "power3.out",
+          scrollTrigger: { trigger: formPanelRef.current, start: "top 85%", once: true },
+        }
+      );
+
+      gsap.fromTo(infoPanelRef.current,
+        { opacity: 0, x: 60 },
+        {
+          opacity: 1, x: 0, duration: 0.9, ease: "power3.out", delay: 0.15,
+          scrollTrigger: { trigger: infoPanelRef.current, start: "top 85%", once: true },
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -134,7 +178,7 @@ const Contact = () => {
   return (
     <>
       {/* HEADER */}
-      <div className="relative w-full bg-[#0B1D3A] py-20 px-6 md:px-16 overflow-hidden">
+      <div ref={headerRef} style={{ opacity: 0 }} className="relative w-full bg-[#0B1D3A] py-20 px-6 md:px-16 overflow-hidden">
         <div className="absolute top-0 left-0 w-72 h-72 bg-[var(--primary,#c8a24b)]/20 blur-3xl rounded-full" />
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-[var(--primary,#c8a24b)]/10 blur-3xl rounded-full" />
         <div className="relative flex items-center justify-center">
@@ -150,7 +194,7 @@ const Contact = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[var(--primary,#c8a24b)]/10 rounded-full blur-3xl" />
 
         <div className="relative max-w-7xl mx-auto">
-          <div className="mb-16 text-center max-w-3xl mx-auto">
+          <div ref={sectionHeadingRef} style={{ opacity: 0 }} className="mb-16 text-center max-w-3xl mx-auto">
             <p className="text-[var(--primary,#c8a24b)] uppercase tracking-[5px] text-sm font-semibold px-4 py-2 bg-[var(--primary,#c8a24b)]/20 inline-block rounded-full">
               Get In Touch
             </p>
@@ -166,8 +210,8 @@ const Contact = () => {
 
           <div className="grid lg:grid-cols-5 gap-10">
             {/* LEFT FORM */}
-            <div className="lg:col-span-3">
-              <div className="bg-[#0B1D3A] rounded-3xl shadow-xl p-8 md:p-12 h-full">
+            <div ref={formPanelRef} style={{ opacity: 0 }} className="lg:col-span-3">
+              <div className="bg-[#0B1D3A] rounded-md shadow-xl p-8 md:p-12 h-full">
                 <div className="mb-8">
                   <h3 className="text-3xl font-bold text-white">Send Us a Message</h3>
                   <p className="text-gray-300 mt-3">
@@ -306,8 +350,8 @@ const Contact = () => {
             </div>
 
             {/* RIGHT CONTACT DETAILS */}
-            <div className="lg:col-span-2">
-              <div className="bg-[#0B1D3A] rounded-3xl shadow-xl p-8 md:p-10 h-full flex flex-col justify-between">
+            <div ref={infoPanelRef} style={{ opacity: 0 }} className="lg:col-span-2">
+              <div className="bg-[#0B1D3A] rounded-md shadow-xl p-8 md:p-10 h-full flex flex-col justify-between">
                 <div>
                   <span className="text-[var(--primary,#c8a24b)] uppercase tracking-[4px] text-xs font-semibold">
                     Contact Information

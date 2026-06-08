@@ -1,61 +1,85 @@
-"use client"
+"use client";
+
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
     HiOutlineShieldCheck,
     HiOutlineHome,
     HiOutlineLightningBolt,
     HiOutlineSupport,
-} from "react-icons/hi"
-import { motion } from "framer-motion"
+} from "react-icons/hi";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const features = [
     {
-        icon: (
-            <div className="p-2 rounded-full bg-[var(--primary)]/30">
-                <HiOutlineHome className="text-4xl text-[var(--primary)]" />
-            </div>
-        ),
-        title: "Premium Properties",
+        icon: <HiOutlineHome className="text-3xl text-[var(--primary)] transition-transform duration-500 group-hover:scale-110" />,
+        title: "30+ Years Expertise",
         description:
-            "Handpicked luxury homes designed for modern living.",
+            "Decades of experience in residential, commercial, and land investments with proven market knowledge.",
     },
-
     {
-        icon: (
-            <div className="p-2 rounded-full bg-[var(--primary)]/30">
-                <HiOutlineShieldCheck className="text-4xl text-[var(--primary)]" />
-            </div>
-        ),
-        title: "Trusted Service",
+        icon: <HiOutlineShieldCheck className="text-3xl text-[var(--primary)] transition-transform duration-500 group-hover:scale-110" />,
+        title: "Verified & Secure Deals",
         description:
-            "Verified listings with transparent and secure deals.",
+            "All properties are legally verified ensuring safe, transparent, and risk-free transactions.",
     },
-
     {
-        icon: (
-            <div className="p-2 rounded-full bg-[var(--primary)]/30">
-                <HiOutlineLightningBolt className="text-4xl text-[var(--primary)]" />
-            </div>
-        ),
-        title: "Fast Process",
+        icon: <HiOutlineLightningBolt className="text-3xl text-[var(--primary)] transition-transform duration-500 group-hover:scale-110" />,
+        title: "Premium Property Access",
         description:
-            "Quick and smooth property buying experience.",
+            "Exclusive listings across Thane, Mumbai, Panvel, and Dubai with high-value investment options.",
     },
-
     {
-        icon: (
-            <div className="p-2 rounded-full bg-[var(--primary)]/30">
-                <HiOutlineSupport className="text-4xl text-[var(--primary)]" />
-            </div>
-        ),
-        title: "24/7 Support",
+        icon: <HiOutlineSupport className="text-3xl text-[var(--primary)] transition-transform duration-500 group-hover:scale-110" />,
+        title: "End-to-End Support",
         description:
-            "Always available support for every step.",
+            "Complete assistance from property search to final documentation and ownership transfer.",
     },
-]
+];
 
 export default function WhyChooseUs() {
+    const sectionRef = useRef(null);
+    const tagRef = useRef(null);
+    const headingRef = useRef(null);
+    const cardsRef = useRef([]);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(tagRef.current,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1, y: 0, duration: 0.6, ease: "power3.out",
+                    scrollTrigger: { trigger: tagRef.current, start: "top 85%", once: true },
+                }
+            );
+
+            gsap.fromTo(headingRef.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.15,
+                    scrollTrigger: { trigger: headingRef.current, start: "top 85%", once: true },
+                }
+            );
+
+            gsap.fromTo(cardsRef.current,
+                { opacity: 0, y: 70 },
+                {
+                    opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
+                    stagger: 0.15,
+                    scrollTrigger: { trigger: cardsRef.current[0], start: "top 85%", once: true },
+                }
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="relative w-full bg-gradient-to-t from-white to-black py-24 px-6 lg:px-12">
+        <section ref={sectionRef} className="relative w-full py-24 px-6 lg:px-12">
+
+            {/* BACKGROUND VIDEO */}
             <video
                 autoPlay
                 muted
@@ -70,58 +94,54 @@ export default function WhyChooseUs() {
             {/* OVERLAY */}
             <div className="absolute inset-0 bg-black/50"></div>
 
-            {/* Top Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center mb-10">
+            {/* HEADING */}
+            <div className="relative z-10 mb-14 max-w-3xl text-white">
+                <p ref={tagRef} style={{ opacity: 0 }} className="text-[var(--primary)] uppercase tracking-[5px] text-sm mb-4">
+                    Why Choose Us
+                </p>
 
-
-                <div className="relative z-10 text-white">
-                    <p className="text-sm inline-block p-2 rounded-full font-semibold uppercase tracking-[4px] mb-4 text-white bg-[var(--primary)]/50">
-                        Why Choose Us
-                    </p>
-
-                    <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight pl-4 py-1 border-l-2">
-                        We Deliver The Best Real Estate Experience
-                    </h2>
-                </div>
+                <h2 ref={headingRef} style={{ opacity: 0 }} className="text-4xl md:text-5xl font-bold leading-tight">
+                    Built on Trust & Experience
+                </h2>
             </div>
 
-            {/* Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* CARDS */}
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
                 {features.map((item, index) => (
                     <div
-                        
                         key={index}
-                        className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-200 p-6 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl flex flex-col"
+                        ref={(el) => (cardsRef.current[index] = el)}
+                        style={{ opacity: 0 }}
+                        className="group relative border border-white/10 bg-white/10 backdrop-blur-md p-6 flex flex-col overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(255,255,255,0.08)]"
                     >
 
-                        {/* Icon */}
-                        <motion.div
-                         initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: .5 }}
-                        viewport={{ once: true }}
-                        className="mb-6 flex h-16 w-full items-center justify-center rounded-2xl text-3xl text-white transition-all duration-500 group-hover:scale-110">
-                            {item.icon}
-                        </motion.div>
+                        {/* subtle glow overlay */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-t from-[var(--primary)]/10 to-transparent"></div>
 
-                        {/* Title */}
-                        <h3 className="text-2xl  font-bold text-black mb-4 transition-all duration-500">
+                        {/* ICON */}
+                        <div className="mb-5 relative z-10">
+                            {item.icon}
+                        </div>
+
+                        {/* TITLE */}
+                        <h3 className="text-lg font-semibold text-white mb-2 relative z-10">
                             {item.title}
                         </h3>
 
-                        {/* Description */}
-                        <p className="text-gray-600 leading-relaxed flex-1">
+                        {/* DESCRIPTION */}
+                        <p className="text-gray-400 text-sm leading-relaxed flex-1 relative z-10">
                             {item.description}
                         </p>
 
-                        {/* Fixed Bottom Line */}
-                        <div className="mt-8 flex justify-center">
-                            <div className="h-[2px] w-12 rounded-full bg-gradient-to-r from-[var(--primary)] to-black transition-all duration-500 group-hover:w-full"></div>
-                        </div>
+                        {/* HOVER STRIP */}
+                        <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[var(--primary)] transition-all duration-500 group-hover:w-full"></div>
 
                     </div>
                 ))}
+
             </div>
+
         </section>
-    )
+    );
 }

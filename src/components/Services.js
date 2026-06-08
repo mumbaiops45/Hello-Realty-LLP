@@ -1,29 +1,35 @@
 "use client";
 
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const services = [
   {
-    title: "Property Buying Assistance",
-    desc: "We help you find verified properties based on your budget, location, and investment goals with expert guidance and negotiation support.",
+    title: "Residential Properties",
+    desc: "Helping clients find dream homes, apartments, and luxury villas with complete guidance and trusted support.",
   },
   {
-    title: "Home Loan Support",
-    desc: "Get complete assistance in home loans, EMI planning, eligibility checks, and smooth bank approvals with trusted partners.",
+    title: "Commercial Spaces",
+    desc: "Providing strategic office spaces and commercial investments in prime business locations for maximum growth.",
   },
   {
-    title: "Site Visit Coordination",
-    desc: "Schedule and manage hassle-free property visits with our dedicated real estate experts at your convenience.",
+    title: "Plotted Land Investments",
+    desc: "Assisting in secure land investments for future development with strong legal and market verification.",
   },
   {
-    title: "Legal Documentation",
-    desc: "End-to-end support in agreements, registration, ownership transfer, and legal verification for safe transactions.",
+    title: "Real Estate Documentation",
+    desc: "Complete documentation services including verification, creation, and legal scrutiny for safe transactions.",
   },
   {
     title: "Investment Advisory",
-    desc: "Get expert insights on high-growth properties, ROI analysis, and smart real estate investment planning.",
+    desc: "Expert guidance to help buyers and investors make profitable and informed real estate decisions.",
   },
   {
-    title: "Verified Listings",
-    desc: "Access only 100% verified and trusted property listings ensuring transparency and security in every deal.",
+    title: "Market Coverage",
+    desc: "Serving Thane, Mumbai, Panvel, and Dubai with deep market knowledge and premium property access",
   },
 ];
 
@@ -32,13 +38,42 @@ export default function ServicesGrid({
   cardBg = "bg-white",
   textColor = "text-black",
   descColor = "text-gray-600",
-  headingMode = "light", // light | dark
+  headingMode = "light",
 }) {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(headingRef.current,
+        { opacity: 0, x: -60 },
+        {
+          opacity: 1, x: 0, duration: 0.8, ease: "power3.out",
+          scrollTrigger: { trigger: headingRef.current, start: "top 85%", once: true },
+        }
+      );
+
+      gsap.fromTo(cardsRef.current,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
+          stagger: 0.12,
+          scrollTrigger: { trigger: cardsRef.current[0], start: "top 85%", once: true },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className={`${sectionBg} py-20 px-6 md:px-16`}>
+    <section ref={sectionRef} className={`${sectionBg} py-20 px-6 md:px-16`}>
 
       {/* Heading */}
       <h2
+        ref={headingRef}
+        style={{ opacity: 0 }}
         className={`
           text-3xl md:text-4xl font-bold mb-12 border-l-4 pl-4 py-1
           ${headingMode === "dark"
@@ -58,6 +93,8 @@ export default function ServicesGrid({
         {services.map((item, index) => (
           <div
             key={index}
+            ref={(el) => (cardsRef.current[index] = el)}
+            style={{ opacity: 0 }}
             className={`
               ${cardBg}
               rounded-2xl
@@ -69,7 +106,7 @@ export default function ServicesGrid({
               transition-all duration-300
               flex flex-col
               shadow-md
-              
+
             `}
           >
 
@@ -95,7 +132,7 @@ export default function ServicesGrid({
                 {item.title}
               </h3>
 
-            
+
             </div>
 
           </div>

@@ -1,29 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const experts = [
     {
-        name: "Rahul Mehta",
-        role: "Senior Property Consultant",
-        image: "/Home/1.jpg",
+        name: "Darshil Shah",
+        role: "Partner",
+        image: "/Home/avtar.png",
         description:
-            "Rahul has 10+ years of experience in luxury real estate and has helped 500+ families find their dream homes in Mumbai.",
+            "With 5+ years of experience in the real estate industry - specializes in residential and commercial property consulting, investment advisory, client relationship management, and digital marketing strategies that help clients identify the right opportunities in a dynamic market.",
     },
     {
-        name: "Priya Sharma",
-        role: "Real Estate Advisor",
-        image: "/Home/3.jpg",
+        name: "Bhanu Nisar",
+        role: "Partner",
+        image: "/Home/avtar.png",
         description:
-            "Priya specializes in residential investments and guides clients for high ROI properties across Pune and Mumbai.",
-    },
-    {
-        name: "Amit Deshmukh",
-        role: "Commercial Property Expert",
-        image: "/Home/2.jpg",
-        description:
-            "Amit focuses on commercial spaces, office leasing, and investment-grade properties with strong market insights.",
+            "With 30+ years of experience in the real estate industry - brings deep market expertise, strong industry relationships, and extensive knowledge of property transactions, documentations and investment opportunities. Her decades of experience have helped countless clients make informed and profitable real estate decisions.",
     },
 ];
 
@@ -31,15 +28,50 @@ export default function PropertyExperts() {
     const [active, setActive] = useState(0);
     const expert = experts[active];
 
+    const sectionRef = useRef(null);
+    const headingRef = useRef(null);
+    const listRef = useRef(null);
+    const detailRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(headingRef.current,
+                { opacity: 0, x: -60 },
+                {
+                    opacity: 1, x: 0, duration: 0.8, ease: "power3.out",
+                    scrollTrigger: { trigger: headingRef.current, start: "top 85%", once: true },
+                }
+            );
+
+            gsap.fromTo(listRef.current,
+                { opacity: 0, x: -50 },
+                {
+                    opacity: 1, x: 0, duration: 0.8, ease: "power3.out", delay: 0.15,
+                    scrollTrigger: { trigger: listRef.current, start: "top 85%", once: true },
+                }
+            );
+
+            gsap.fromTo(detailRef.current,
+                { opacity: 0, x: 60 },
+                {
+                    opacity: 1, x: 0, duration: 0.8, ease: "power3.out", delay: 0.25,
+                    scrollTrigger: { trigger: detailRef.current, start: "top 85%", once: true },
+                }
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="w-full bg-white py-20 px-6 lg:px-12">
+        <section ref={sectionRef} className="w-full bg-white py-20 px-6 lg:px-12">
 
             {/* Heading */}
-            <div className="mb-14">
+            <div ref={headingRef} style={{ opacity: 0 }} className="mb-14">
                 <h2 className="text-3xl md:text-4xl font-bold text-black pl-4 py-1 border-l-2">
                     Meet Our{" "}
                     <span className="text-[var(--primary)]">
-                        Property Experts
+                        Partners
                     </span>
                 </h2>
                 <p className="text-gray-500 mt-2">
@@ -51,14 +83,14 @@ export default function PropertyExperts() {
             <div className="grid grid-cols-1 lg:grid-cols-[30vw_1fr] gap-10 mx-auto">
 
                 {/* LEFT - Expert List */}
-                <div className="space-y-4">
+                <div ref={listRef} style={{ opacity: 0 }} className="space-y-4">
 
                     {experts.map((item, index) => (
                         <div
                             key={index}
                             onClick={() => setActive(index)}
-                            className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all duration-300 border
-              
+                            className={`flex flex-1 items-center gap-4 p-4 rounded-xl cursor-pointer transition-all duration-300 border
+
               ${active === index
                                     ? "border-[var(--primary)] bg-[var(--primary)]/10"
                                     : "border-gray-200 hover:bg-gray-50"
@@ -67,7 +99,7 @@ export default function PropertyExperts() {
                         >
                             <div className="relative w-14 h-14 rounded-full overflow-hidden">
                                 <Image
-                                    src={item.image}
+                                    src={item.image || "/Home/avtar.png"}
                                     alt={item.name}
                                     fill
                                     className="object-cover"
@@ -84,13 +116,13 @@ export default function PropertyExperts() {
                 </div>
 
                 {/* RIGHT - Details */}
-                <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                <div ref={detailRef} style={{ opacity: 0 }} className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
 
                     <div className="flex items-center gap-4 mb-6">
 
                         <div className="relative w-100 h-60 rounded-md overflow-hidden">
                             <Image
-                                src={expert.image}
+                                src={expert.image || "/Home/avtar.png"}
                                 alt={expert.name}
                                 fill
                                 className="object-contain"
@@ -111,8 +143,6 @@ export default function PropertyExperts() {
                         </div>
 
                     </div>
-
-
 
                 </div>
 
