@@ -12,6 +12,12 @@ export const metadata = {
   },
   description:
     "With over 30 years of experience, Welcome Realty LLP offers premium residential, commercial, and plotted land investment solutions across Thane, Mumbai, Panvel & Dubai. Expert real estate documentation, property buying, selling & investment advisory.",
+
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   // ── Keywords ───────────────────────────────────────────────────────────────
   keywords: [
     // Brand
